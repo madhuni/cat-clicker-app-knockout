@@ -19,15 +19,15 @@
                 <h2 class="text-center">Your cats will display here</h2>
                 <hr>
                 <div class="row cat-row">
-                    <h2 class="cat-name text-center" data-bind="text: currentCat().name"></h2>
+                    <h2 class="cat-name text-center" data-bind="text: currentCat.name"></h2>
                     <div class="cat-image-container col-sm-8">
-                        <img src="" alt="cute cat picture" class="cat-image img-responsive" width="600" height="600" data-bind="click: counterIncrement, attr: {src: currentCat().imgSrc}">
+                        <img src="" alt="cute cat picture" class="cat-image img-responsive" width="600" height="600" data-bind="click: clickCounter, attr: {src: currentCat.imgSrc}">
                     </div>
                     <div class="click-counter well col-sm-3">
                         <h4 class="text-center">No Of Clicks</h4>
-                        <h2 class="display-count text-center" data-bind="text: currentCat().clickCount"></h3>
-                        <h4 class="text-center" data-bind="text: currentCat().title"></h4>
-                        <ul data-bind="foreach: currentCat().nickNames">
+                        <h2 class="display-count text-center" data-bind="text: currentCat.clickCount()"></h3>
+                        <h4 class="text-center" data-bind="text: title"></h4>
+                        <ul data-bind="foreach: currentCat.nickNames">
                             <li data-bind="text: $data"></li>
                         </ul>
                     </div>
