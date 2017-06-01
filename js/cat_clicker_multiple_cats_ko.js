@@ -1,30 +1,31 @@
 var cats = [{
         name: "Mr. Tom",
         imgSrc: "images/cat-image.jpg",
-        clickCount: 0,
+        clickCount: 3,
         nickNames: ["ramesh"],
         viewPanal: false
     }, {
         name: "Mr. Tommy",
         imgSrc: "images/cat-image-2.jpg",
-        clickCount: 0,
+        clickCount: 4,
         nickNames: ["suresh"],
         viewPanal: false
     }, {
         name: "Mr. P Body",
         imgSrc: "images/cat-image-3.jpg",
-        clickCount: 0,
+        clickCount: 5,
         nickNames: ["mahesh"],
         viewPanal: false
     }, {
         name: "Mr. Hungry",
         imgSrc: "images/cat-image-4.jpg",
-        clickCount: 0,
+        clickCount: 6,
         nickNames: ["divesh"],
         viewPanal: false
     }];
 
-/* Using the constructor function to accept a cat object as parameter and make the new cat */
+/* Using the constructor function to accept a cat object as parameter and make the new cat 
+*/
 var Cat = function (data) {
     this.name = ko.observable(data.name);
     this.clickCount = ko.observable(data.clickCount);
@@ -55,12 +56,26 @@ var ViewModel = function () {
         self.catsContainer.push(new Cat(cats[i]));
     }
     
-    /* Setting the current cat to the first element of the KO array */
-    self.currentCat = self.catsContainer()[0];
-    self.clickCounter = function () {
-        return self.currentCat.clickCount(self.currentCat.clickCount() + 1);
+    self.currentCat = ko.observable(self.catsContainer()[0]);
+    
+    self.setCurrentCat = function (catName) {
+//        console.log("I am : "+ catName());
+//        console.log(self.catsContainer()[0]);
+        for (var i = 0; i < self.catsContainer().length; i++) {
+//            console.log(self.catsContainer[i]);
+            if (self.catsContainer()[i].name() === catName())
+//                console.log(self.catsContainer()[i].name());
+                self.currentCat(self.catsContainer()[i]);
+            }
+        }
+        console.log(self.currentCat().clickCount());
     };
-};
+    
+    /* Setting the current cat to the first element of the KO array */
+    self.clickCounter = function () {
+        return self.currentCat().clickCount(self.currentCat().clickCount() + 1);
+    };
+    
 
 var vm = new ViewModel();
 ko.applyBindings(vm);
