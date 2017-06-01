@@ -15,13 +15,13 @@
     </header>
     <div id="wrapper" class="container">
         <div class="row">
-            <div id="cat-count-container" class="col-sm-12" data-bind="with: currentCat">
+            <div id="cat-count-container" class="col-sm-12" data-bind="with: currentCat()">
                 <h2 class="text-center">Your cats will display here</h2>
                 <hr>
                 <div class="row cat-row">
                     <h2 class="cat-name text-center" data-bind="text: name"></h2>
-                    <ul class="col-sm-2 cat-list" data-bind="foreach: cats">
-                        <li data-bind="text: $data.name"></li>
+                    <ul class="col-sm-2 cat-list" data-bind="foreach: $parent.catsContainer">
+                        <li data-bind="text: $data.name, click: $root.setCurrentCat($data.name)"></li>
                     </ul>
                     <div class="cat-image-container col-sm-6">
                         <img src="" alt="cute cat picture" class="cat-image img-responsive" width="600" height="600" data-bind="click: $parent.clickCounter, attr: {src: imgSrc}">
