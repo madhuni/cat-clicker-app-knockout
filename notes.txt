@@ -1,0 +1,15 @@
+1) We can use the "with" binding to set the context of the current object.
+
+2) After defining the "Object" using the "with" binding, we can now directly
+call the properties and function of that particular object.
+
+ex:
+<div id="cat-count-container" class="col-sm-12" data-bind="with: currentCat">
+    <h2 class="cat-name text-center" data-bind="text: name"></h2>
+</div>
+
+Here 'currentCat' is the object and the 'name' is the property of the currentCat. We also don't need to use the object as the observable i.e.
+'currentCat()' and the observable property of the object as the observable i.e. 'name()'.
+
+3) To grab the ViewModel object, we can use $root property to access all its
+properties and functions.
