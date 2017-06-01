@@ -21,7 +21,7 @@
                 <div class="row cat-row">
                     <h2 class="cat-name text-center" data-bind="text: name"></h2>
                     <ul class="col-sm-2 cat-list" data-bind="foreach: $parent.catsContainer">
-                        <li data-bind="text: $data.name, click: $root.setCurrentCat($data.name)"></li>
+                        <li data-bind="text: $data.name, click: $root.setCurrentCat.bind($root, $data)"></li>
                     </ul>
                     <div class="cat-image-container col-sm-6">
                         <img src="" alt="cute cat picture" class="cat-image img-responsive" width="600" height="600" data-bind="click: $parent.clickCounter, attr: {src: imgSrc}">
