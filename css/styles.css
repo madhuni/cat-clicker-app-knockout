@@ -12,6 +12,26 @@
     font-weight: bold;
 }
 
+.cat-list {
+    list-style: none;
+    padding: 5px;
+    margin: 0 10px;
+}
+
+.cat-list li {
+    text-align: center;
+    padding: 5px;
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+}
+
+.cat-list li:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
 .cat-image-container,
 .click-counter {
     margin-bottom: 10px;
