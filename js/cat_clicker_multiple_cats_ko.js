@@ -1,25 +1,25 @@
 var cats = [{
         name: "Mr. Tom",
         imgSrc: "images/cat-image.jpg",
-        clickCount: 3,
+        clickCount: 0,
         nickNames: ["ramesh"],
         viewPanal: false
     }, {
         name: "Mr. Tommy",
         imgSrc: "images/cat-image-2.jpg",
-        clickCount: 4,
+        clickCount: 0,
         nickNames: ["suresh"],
         viewPanal: false
     }, {
         name: "Mr. P Body",
         imgSrc: "images/cat-image-3.jpg",
-        clickCount: 5,
+        clickCount: 0,
         nickNames: ["mahesh"],
         viewPanal: false
     }, {
         name: "Mr. Hungry",
         imgSrc: "images/cat-image-4.jpg",
-        clickCount: 6,
+        clickCount: 0,
         nickNames: ["divesh"],
         viewPanal: false
     }];
@@ -56,26 +56,18 @@ var ViewModel = function () {
         self.catsContainer.push(new Cat(cats[i]));
     }
     
+    /* Setting the initial value of the current cat to the first cat */
     self.currentCat = ko.observable(self.catsContainer()[0]);
     
-    self.setCurrentCat = function (catName) {
-//        console.log("I am : "+ catName());
-//        console.log(self.catsContainer()[0]);
-        for (var i = 0; i < self.catsContainer().length; i++) {
-//            console.log(self.catsContainer[i]);
-            if (self.catsContainer()[i].name() === catName())
-//                console.log(self.catsContainer()[i].name());
-                self.currentCat(self.catsContainer()[i]);
-            }
-        }
-        console.log(self.currentCat().clickCount());
-    };
+    self.setCurrentCat = function (catObj) {
+        self.currentCat(catObj);
+    }
     
-    /* Setting the current cat to the first element of the KO array */
     self.clickCounter = function () {
         return self.currentCat().clickCount(self.currentCat().clickCount() + 1);
     };
     
+};
 
 var vm = new ViewModel();
 ko.applyBindings(vm);
