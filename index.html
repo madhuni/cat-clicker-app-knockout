@@ -20,7 +20,10 @@
                 <hr>
                 <div class="row cat-row">
                     <h2 class="cat-name text-center" data-bind="text: name"></h2>
-                    <div class="cat-image-container col-sm-8">
+                    <ul class="col-sm-2 cat-list" data-bind="foreach: cats">
+                        <li data-bind="text: $data.name"></li>
+                    </ul>
+                    <div class="cat-image-container col-sm-6">
                         <img src="" alt="cute cat picture" class="cat-image img-responsive" width="600" height="600" data-bind="click: $parent.clickCounter, attr: {src: imgSrc}">
                     </div>
                     <div class="click-counter well col-sm-3">
